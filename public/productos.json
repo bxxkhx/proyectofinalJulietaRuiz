@@ -1,0 +1,32 @@
+[
+{
+"id":1,
+"img":"https://i.pinimg.com/564x/1c/93/65/1c936559db8cc7ff543a911c0cb17aa5.jpg",
+"nombre":"Cargo Negro",
+"precio":15000
+},
+{
+    "id":2,
+    "img":"https://i.pinimg.com/564x/7b/72/8d/7b728dbe565281cee76034fdbaf29fc5.jpg",
+    "nombre":"Pollera",
+    "precio":12000
+},
+{
+    "id":3,
+    "img":"https://i.pinimg.com/564x/14/4c/6d/144c6d7a5d98097ef5664e5089539965.jpg",
+    "nombre":"Remera Oversized",
+    "precio":17000
+},
+{
+    "id":4,
+    "img":"https://i.pinimg.com/564x/65/ca/d7/65cad77c52c4383314f74b9c0130c06e.jpg",
+    "nombre":"Sweater Rayas",
+    "precio":13000
+},
+{
+    "id":5,
+    "img":"https://i.pinimg.com/564x/ca/e9/dc/cae9dcc4d78750603bb111ae3c7f0acc.jpg",
+    "nombre":"Jean",
+    "precio":10000
+}
+]
