@@ -1,55 +1,29 @@
 const contenedor=document.querySelector(`#container`)
 
-fetch('productos.json')
-    .then(response => response.json())
-    .then(data => {
-        // Aquí manipulas tus datos como lo haces actualmente con `productos`
-        mostrarProductos(data);
-    })
-    .catch(error => console.error('Error al cargar datos desde JSON:', error));
-
-function mostrarProductos(productos) {
-    const contenedor = document.querySelector('#container');
-
-    // Limpiamos el contenedor antes de agregar nuevos productos
-    contenedor.innerHTML = '';
-
-    // Recorremos los productos y los agregamos al contenedor
-    productos.forEach(producto => {
-        const cardProducto = document.createElement('article');
-        cardProducto.innerHTML = `
-            <img src="${producto.img}" alt="${producto.nombre}">
-            <div>
-                <h3>${producto.nombre}</h3>
-                <p>Precio: $${producto.precio}</p>
-                <button id="${producto.id}" class="btn-compra">Comprar</button>
-            </div>
-        `;
-        contenedor.appendChild(cardProducto);
-    });
+ const verProductos = () =>{
+ fetch('productos.json')
+    .then((response) => response.json())
+    .then(informacion => {
+        let acumulador = ``;
+        informacion.forEach((productos)=>{
+        console.log(productos)
+        acumulador += `<div class="card">
+            <img src="${productos.img}">
+            <h2>${productos.nombre}<h2>
+            <h2>$${productos.precio}<h2>
+            <button id="${productos.id}" class="btn-compra">Comprar</button>
+            </div>`
+        })
+        document.getElementById(`container`).innerHTML=acumulador;
+        const btnComprar = document.querySelectorAll(`.btn-compra`)
+        btnComprar.forEach(el=>{
+            el.addEventListener(`click`,(e)=>
+            agregarAlCarrito(e.target.id)
+            )
+        })
+        })    
 }
-
-const mostrarProductos=(data)=> {
-    data.forEach(producto =>{
-        const cardProducto=document.createElement(`article`)
-        cardProducto.setAttribute(`id`,`tarjeta-producto`)
-        cardProducto.innerHTML= `
-                                <img class="prod-img" src="${producto?.img}" alt="${producto?.nombre}" style="width: 300px "
-                                <div class="prod-description">
-                                    <h5 class="ropa-nombre">${producto?.nombre}</h5>
-                                    <button id="${producto.id}" class="btn-compra">comprar</button>
-                                </div>
-`;
-        contenedor.appendChild(cardProducto);
-    })
-    const btnComprar = document.querySelectorAll(`.btn-compra`)
-    btnComprar.forEach(el=>{
-        el.addEventListener(`click`,(e)=>
-        agregarAlCarrito(e.target.id)
-        )
-    })
-}
-mostrarProductos(productos);
+verProductos()
 const carrito=[]
 function agregarAlCarrito(id){
     const existe= carrito.some(prod=>prod.id===parseInt(id))
